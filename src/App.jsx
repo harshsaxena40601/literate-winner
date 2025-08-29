@@ -257,11 +257,12 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen">
+      <div className="min-h-screen" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
         <Nav />
-        
+
+        {/* Search + Categories bar (POS only) */}
         <main className="max-w-7xl mx-auto w-full px-3 md:px-4 py-4 grid grid-cols-12 gap-3 md:gap-4">
-          {/* Sidebar - hidden on mobile */}
+          {/* Sidebar */}
           <aside className="hidden lg:block col-span-3 xl:col-span-2">
             <div className="card p-3 sticky top-24">
               <div className="text-sm font-semibold text-white/80">Categories</div>
@@ -283,7 +284,7 @@ export default function App() {
             </div>
           </aside>
 
-          {/* Main content area */}
+          {/* Route Outlet Area */}
           <section className="col-span-12 lg:col-span-9 xl:col-span-10">
             <Routes>
               <Route path="/" element={<POSPanel {...{ showLowStock, lowStockItems, outOfStockItems, gridLayout, filteredProducts, remainingStock, lowStockThreshold, addToCart, totals, clearCart, cart, dec, inc, removeLine, discount, setDiscount, taxPercent, setTaxPercent, lowStockThresholdState: lowStockThreshold, setLowStockThreshold, sku, setSku, onQuickAdd, payMode, setPayMode, printReceipt, checkout, focusedCartIdRef }} />} />
@@ -293,6 +294,25 @@ export default function App() {
             </Routes>
           </section>
         </main>
+
+        {isLoading && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+            <div className="bg-card rounded-2xl p-6 flex flex-col items-center">
+              <Loader2 className="h-8 w-8 animate-spin text-white" />
+              <div className="mt-2 font-medium text-white">Processing...</div>
+            </div>
+          </div>
+        )}
+
+        {isOffline && (
+          <div className="fixed bottom-4 left-4 bg-[color:var(--tw-color-accent)] text-white px-4 py-2 rounded-xl shadow-lg">
+            You are offline. Changes will sync when back online.
+          </div>
+        )}
+
+        <footer className="py-6 text-center text-xs text-white/40">
+          99 Market — POS. Shortcuts: <kbd>Ctrl+Enter</kbd> checkout, <kbd>+</kbd>/<kbd>-</kbd> adjust, <kbd>Del</kbd> remove.
+        </footer>
       </div>
     </BrowserRouter>
   );

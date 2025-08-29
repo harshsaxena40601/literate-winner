@@ -10,16 +10,8 @@ html, body, #root { height: 100%; }
 
 
 /* Palette + base */
-:root {
-  color-scheme: dark;
-  --tw-color-accent: #0d086f; /* Indigo 600 */
-  --tw-color-accent-ring: rgba(79, 70, 229, 0.2);
-}
-.dark {
-  --tw-color-accent: #0d0f76; /* Indigo 500 */
-  --tw-color-accent-ring: rgba(99, 102, 241, 0.2);
-}
-html, body { background-color: #042877; }
+:root { color-scheme: dark; --tw-color-accent: #fc8019; --tw-color-accent-ring: rgba(252,128,25,0.55); }
+html, body { background-color: #e76f00; }
 * { scrollbar-color: #2b2f33 #0b0f12; }
 a { color: #fff; }
 
@@ -51,38 +43,4 @@ a { color: #fff; }
 
 @layer utilities {
   .bg-soft { @apply bg-gray-50 dark:bg-slate-800; }
-}
-
-/* Add these new utility classes */
-@layer utilities {
-  .mobile-pos-layout {
-    @apply flex flex-col h-[100vh] lg:h-auto;
-  }
-  
-  .products-container {
-    @apply flex-1 overflow-y-auto pb-32 lg:pb-0;
-  }
-  
-  .checkout-container {
-    @apply fixed bottom-0 left-0 right-0 bg-card border-t border-neutral-800 p-4 lg:relative lg:border-0;
-  }
-}
-
-/* Fixed checkout styles */
-.fixed-checkout {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--tw-color-accent);
-  border-top: 1px solid rgb(38, 38, 38);
-  padding: 1rem;
-  z-index: 40;
-}
-
-/* Adjust main content area to account for fixed checkout */
-.products-grid {
-  padding-bottom: 200px; /* Height of checkout + padding */
-  height: calc(100vh - 6rem); /* Viewport height minus header */
-  overflow-y: auto;
 }
