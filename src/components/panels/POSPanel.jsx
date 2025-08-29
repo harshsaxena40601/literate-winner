@@ -12,9 +12,9 @@ export default function POSPanel({
   focusedCartIdRef
 }) {
   return (
-    <div className="mobile-pos-layout">
-      {/* Products Section - Top */}
-      <div className="products-container">
+    <div className="h-[calc(100vh-6rem)] flex flex-col relative">
+      {/* Products Section - Scrollable */}
+      <div className="flex-1 overflow-y-auto pb-[200px]">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {filteredProducts.map(product => (
             <ProductCard 
@@ -26,32 +26,34 @@ export default function POSPanel({
         </div>
       </div>
 
-      {/* Checkout Section - Bottom */}
-      <div className="checkout-container">
-        <div className="flex flex-col gap-3">
-          <div className="flex justify-between items-center">
-            <h3 className="font-semibold text-white">Cart ({totals.items})</h3>
-            <span className="text-lg font-bold text-white">{currency(totals.net)}</span>
+      {/* Fixed Checkout Section */}
+      <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-neutral-800 p-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col gap-3">
+            {/* Cart Summary */}
+            <div className="flex justify-between items-center">
+              <h3 className="font-semibold text-white">Cart ({totals.items})</h3>
+              <span className="text-lg font-bold text-white">{currency(totals.net)}</span>
+            </div>
+            
+            {/* Payment Controls */}
+            <div className="grid grid-cols-2 gap-3">
+              <input
+                type="number"
+                value={discount}
+                onChange={(e) => setDiscount(e.target.value)}
+                placeholder="Discount"
+                className="input"
+              />
+              <button 
+                onClick={checkout}
+                disabled={cart.length === 0}
+                className="btn-accent font-semibold"
+              >
+                Checkout ({currency(totals.net)})
+              </button>
+            </div>
           </div>
-          
-          {/* Cart Items Summary */}
-          <div className="max-h-32 overflow-y-auto">
-            {cart.map(item => (
-              <div key={item.id} className="flex justify-between py-1">
-                <span className="text-sm text-white/80">{item.name} × {item.qty}</span>
-                <span className="text-sm text-white/80">{currency(item.qty * item.priceSnapshot)}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Checkout Button */}
-          <button 
-            onClick={checkout}
-            disabled={cart.length === 0}
-            className="btn-accent w-full py-3 font-semibold"
-          >
-            Checkout
-          </button>
         </div>
       </div>
     </div>

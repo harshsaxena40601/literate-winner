@@ -67,3 +67,22 @@ a { color: #fff; }
     @apply fixed bottom-0 left-0 right-0 bg-card border-t border-neutral-800 p-4 lg:relative lg:border-0;
   }
 }
+
+/* Fixed checkout styles */
+.fixed-checkout {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--tw-color-accent);
+  border-top: 1px solid rgb(38, 38, 38);
+  padding: 1rem;
+  z-index: 40;
+}
+
+/* Adjust main content area to account for fixed checkout */
+.products-grid {
+  padding-bottom: 200px; /* Height of checkout + padding */
+  height: calc(100vh - 6rem); /* Viewport height minus header */
+  overflow-y: auto;
+}
