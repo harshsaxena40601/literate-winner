@@ -268,7 +268,7 @@ export default function App() {
               <div className="text-sm font-semibold text-white/80">Categories</div>
               <div className="mt-2 space-y-2">
                 {categories.map((c) => (
-                  <button key={c} onClick={() => setCategory(c)} className={`w-full text-left px-3 py-2 rounded-xl border transition-all ${category===c? 'bg-accent-red text-white border-accent-red shadow-[0_0_0_3px_var(--tw-color-accent-ring)]' : 'bg-soft border-neutral-800 hover:bg-bg-muted'}`}>
+                  <button key={c} onClick={() => setCategory(c)} className={`w-full text-left px-3 py-2 rounded-xl border transition-all ${category===c? 'bg-[color:var(--tw-color-accent)] text-white border-[color:var(--tw-color-accent)] shadow-[0_0_0_3px_var(--tw-color-accent-ring)]' : 'bg-soft border-neutral-800 hover:bg-bg-muted'}`}>
                     <div className="text-sm font-medium">{c}</div>
                     <div className="text-xs opacity-75">{c === "All" ? products.length : products.filter(p => p.category === c).length} items</div>
                   </button>
@@ -305,7 +305,7 @@ export default function App() {
         )}
 
         {isOffline && (
-          <div className="fixed bottom-4 left-4 bg-accent-red text-white px-4 py-2 rounded-xl shadow-lg">
+          <div className="fixed bottom-4 left-4 bg-[color:var(--tw-color-accent)] text-white px-4 py-2 rounded-xl shadow-lg">
             You are offline. Changes will sync when back online.
           </div>
         )}

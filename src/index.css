@@ -6,12 +6,12 @@ html, body, #root { height: 100%; }
 
 /* Dark mode background polish */
 :root { color-scheme: light dark; }
-.dark body { background-color: #0a0a0a; }
+.dark body { background-color: var(--tw-color-accent); }
 
 
 /* Palette + base */
-:root { color-scheme: dark; }
-html, body { background-color: #0b0f12; }
+:root { color-scheme: dark; --tw-color-accent: #fc8019; --tw-color-accent-ring: rgba(252,128,25,0.55); }
+html, body { background-color: #e76f00; }
 * { scrollbar-color: #2b2f33 #0b0f12; }
 a { color: #fff; }
 
