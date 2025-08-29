@@ -85,8 +85,8 @@ export default function POSPanel({
               <div className="flex items-center justify-between text-lg font-bold border-t dark:border-neutral-700 pt-2"><span>Net Total</span><span className="text-orange-600">{currency(totals.net)}</span></div>
             </div>
             <div className="flex flex-col sm:flex-row gap-2">
-              <button onClick={()=>printReceipt()} disabled={cart.length===0} className={`flex-1 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-neutral-700 dark:text-neutral-200 border ${cart.length===0? 'bg-neutral-100 cursor-not-allowed' : 'bg-soft hover:bg-bg-muted'}`} className="w-full sm:w-auto"><Printer className="h-5 w-5"/> Preview</button>
-              <button onClick={checkout} disabled={cart.length===0} className={`flex-[2] inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-white font-semibold transition-all ${cart.length===0? 'bg-neutral-300 cursor-not-allowed' : 'bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 active:scale-95 shadow-lg'}`} className="w-full sm:w-auto"><Check className="h-5 w-5"/> Checkout</button>
+              <button onClick={()=>printReceipt()} disabled={cart.length===0} className={`flex-1 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-neutral-700 dark:text-neutral-200 border ${cart.length===0? 'bg-neutral-100 cursor-not-allowed' : 'bg-soft hover:bg-bg-muted'} w-full sm:w-auto`}><Printer className="h-5 w-5"/> Preview</button>
+              <button onClick={checkout} disabled={cart.length===0} className={`flex-[2] inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-white font-semibold transition-all ${cart.length===0? 'bg-neutral-300 cursor-not-allowed' : 'bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 active:scale-95 shadow-lg'} w-full sm:w-auto`}><Check className="h-5 w-5"/> Checkout</button>
             </div>
           </div>
         </div>

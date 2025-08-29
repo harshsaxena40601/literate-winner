@@ -9,3 +9,6 @@ export const parseAmount = (str) => {
   const num = Number(cleaned);
   return Number.isFinite(num) ? num : 0;
 };
+
+// Alias for legacy imports
+export const currency = formatINR;
