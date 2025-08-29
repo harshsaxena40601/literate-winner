@@ -7,11 +7,11 @@ export default function Nav() {
   
   return (
     <nav className="sticky top-0 z-40 nav-texture">
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between relative">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <img src={LOGO} alt="Logo" className="h-8 w-8" />
-          <span className="font-bold text-gray-900">99 Market</span>
+        <Link to="/" className="flex items-center gap-3">
+          <img src={LOGO} alt="Logo" className="h-9 w-9" />
+          <span className="font-bold text-white text-lg">99 Market</span>
         </Link>
 
         {/* Navigation Links */}
@@ -20,25 +20,33 @@ export default function Nav() {
             to="/" 
             className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
           >
-            POS
+            <span className="flex items-center gap-2">
+              <span>POS</span>
+            </span>
           </Link>
           <Link 
             to="/payments" 
             className={`nav-link ${location.pathname === "/payments" ? "active" : ""}`}
           >
-            Payments
+            <span className="flex items-center gap-2">
+              <span>Payments</span>
+            </span>
           </Link>
           <Link 
             to="/analytics" 
             className={`nav-link ${location.pathname === "/analytics" ? "active" : ""}`}
           >
-            Analytics
+            <span className="flex items-center gap-2">
+              <span>Analytics</span>
+            </span>
           </Link>
           <Link 
             to="/profile" 
             className={`nav-link ${location.pathname === "/profile" ? "active" : ""}`}
           >
-            Profile
+            <span className="flex items-center gap-2">
+              <span>Profile</span>
+            </span>
           </Link>
         </div>
       </div>
