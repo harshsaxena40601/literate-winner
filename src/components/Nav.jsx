@@ -1,21 +1,47 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, useLocation } from "react-router-dom";
+import { LOGO } from "../utils/constants";
 
 export default function Nav() {
+  const location = useLocation();
+  
   return (
-    <header className="sticky top-0 z-20 bg-bg/90 backdrop-blur border-b border-neutral-800">
-      <div className="max-w-7xl mx-auto px-3 md:px-4 py-3 flex items-center gap-3">
-        <img src="/logo.png" alt="99 Market" className="h-12 md:h-14 w-auto object-contain" loading="eager" decoding="async"/>
-        <nav className="ml-2 flex items-center gap-2 md:gap-4">
-          {['/', '/payments', '/analytics', '/profile'].map((path, idx) => (
-            <NavLink key={path} to={path} end className={({isActive}) =>
-              `px-3 py-2 rounded-xl text-sm font-semibold text-white/90 hover:bg-soft border border-transparent ${isActive ? 'border-[color:var(--tw-color-accent)] shadow-[0_0_0_3px_var(--tw-color-accent-ring)]' : ''}`
-            }>
-              {['POS','Payments','Analytics','Profile'][idx]}
-            </NavLink>
-          ))}
-        </nav>
+    <nav className="sticky top-0 z-40 nav-texture">
+      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2">
+          <img src={LOGO} alt="Logo" className="h-8 w-8" />
+          <span className="font-bold text-gray-900">99 Market</span>
+        </Link>
+
+        {/* Navigation Links */}
+        <div className="flex items-center gap-2">
+          <Link 
+            to="/" 
+            className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
+          >
+            POS
+          </Link>
+          <Link 
+            to="/payments" 
+            className={`nav-link ${location.pathname === "/payments" ? "active" : ""}`}
+          >
+            Payments
+          </Link>
+          <Link 
+            to="/analytics" 
+            className={`nav-link ${location.pathname === "/analytics" ? "active" : ""}`}
+          >
+            Analytics
+          </Link>
+          <Link 
+            to="/profile" 
+            className={`nav-link ${location.pathname === "/profile" ? "active" : ""}`}
+          >
+            Profile
+          </Link>
+        </div>
       </div>
-    </header>
-  )
+    </nav>
+  );
 }
