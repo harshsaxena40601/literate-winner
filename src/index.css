@@ -10,8 +10,16 @@ html, body, #root { height: 100%; }
 
 
 /* Palette + base */
-:root { color-scheme: dark; --tw-color-accent: #fc8019; --tw-color-accent-ring: rgba(252,128,25,0.55); }
-html, body { background-color: #e76f00; }
+:root {
+  color-scheme: dark;
+  --tw-color-accent: #4f46e5; /* Indigo 600 */
+  --tw-color-accent-ring: rgba(79, 70, 229, 0.2);
+}
+.dark {
+  --tw-color-accent: #6366f1; /* Indigo 500 */
+  --tw-color-accent-ring: rgba(99, 102, 241, 0.2);
+}
+html, body { background-color: #042877; }
 * { scrollbar-color: #2b2f33 #0b0f12; }
 a { color: #fff; }
 
