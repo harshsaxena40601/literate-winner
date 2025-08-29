@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useLocation } from "react-router-dom";
-import { LOGO } from "../utils/constants";
+import logo from "/logo.png"; // Import logo directly from public folder
 
 export default function Nav() {
   const location = useLocation();
@@ -11,8 +11,12 @@ export default function Nav() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
           <div className="relative">
-            <img src={LOGO} alt="Logo" className="h-9 w-9" />
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-orange-500 opacity-50 blur-sm -z-10"></div>
+            <img 
+              src={logo} 
+              alt="99 Market Logo" 
+              className="h-9 w-9 object-contain" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#6A0DAD] to-[#7B2CBF] opacity-50 blur-sm -z-10"></div>
           </div>
           <span className="logo-text text-lg">99 Market</span>
         </Link>
