@@ -4,37 +4,49 @@
 
 html, body, #root { height: 100%; }
 
-/* Dark mode background polish */
-:root { color-scheme: light dark; }
-.dark body { background-color: var(--tw-color-accent); }
+/* Dark mode and root variables */
+:root {
+  color-scheme: dark;
+  --tw-color-accent: #6A0DAD;
+  --tw-color-accent-ring: rgba(106, 13, 173, 0.2);
+  --tw-color-secondary: #7B2CBF;
+}
 
+body {
+  background-color: #0F172A;
+  color: #fff;
+}
 
-/* Palette + base */
-:root { color-scheme: dark; --tw-color-accent: #fc8019; --tw-color-accent-ring: rgba(252,128,25,0.55); }
-html, body { background-color: #e76f00; }
 * { scrollbar-color: #2b2f33 #0b0f12; }
-a { color: #fff; }
 
+/* Base components */
+.card {
+  @apply bg-card border border-slate-800 rounded-2xl shadow-sm;
+}
 
-.card { @apply bg-card border border-neutral-800 rounded-2xl shadow-sm; }
-.input { @apply bg-soft border border-neutral-800 rounded-xl px-3 py-2 text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[color:var(--tw-color-accent-ring)]; }
+.input {
+  @apply bg-soft border border-slate-800 rounded-xl px-3 py-2 text-white 
+         placeholder-slate-400 focus:outline-none focus:ring-2 
+         focus:ring-[color:var(--tw-color-accent-ring)];
+}
 
-
-/* Accent button without @apply to avoid Tailwind apply validation */
+/* Accent button */
 .btn-accent {
-  background-color: #ef4444;
+  background: linear-gradient(135deg, var(--tw-color-accent), var(--tw-color-secondary));
   color: #ffffff;
-  border-radius: 0.75rem; /* rounded-xl */
-  padding: 0.5rem 1rem;   /* px-4 py-2 */
-  transition: transform 150ms ease;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  transition: all 150ms ease;
 }
+
 .btn-accent:hover {
-  background-color: #dc2626;
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
+
 .btn-accent:active {
   transform: scale(0.95);
 }
-
 
 /* Navigation styles */
 .nav-texture {
@@ -47,7 +59,7 @@ a { color: #fff; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #6A0DAD, #7B2CBF);
+  background: linear-gradient(90deg, var(--tw-color-accent), var(--tw-color-secondary));
   opacity: 0.15;
   mask-image: repeating-linear-gradient(
     -45deg,
@@ -59,7 +71,7 @@ a { color: #fff; }
 }
 
 .nav-link {
-  @apply px-4 py-2 rounded-md text-gray-300 hover:text-violet-400 transition-all duration-200;
+  @apply px-4 py-2 rounded-md text-slate-300 hover:text-violet-400 transition-all duration-200;
   position: relative;
   overflow: hidden;
 }
@@ -71,7 +83,7 @@ a { color: #fff; }
   left: 50%;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #6A0DAD, #7B2CBF);
+  background: linear-gradient(90deg, var(--tw-color-accent), var(--tw-color-secondary));
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
@@ -82,7 +94,10 @@ a { color: #fff; }
 
 .nav-link.active {
   @apply text-white font-medium;
-  background: linear-gradient(45deg, rgba(106, 13, 173, 0.1), rgba(123, 44, 191, 0.1));
+  background: linear-gradient(45deg, 
+    rgba(106, 13, 173, 0.1),
+    rgba(123, 44, 191, 0.1)
+  );
 }
 
 .nav-link.active::after {
@@ -91,18 +106,19 @@ a { color: #fff; }
 
 /* Logo text gradient */
 .logo-text {
-  background: linear-gradient(90deg, #6A0DAD, #7B2CBF);
+  background: linear-gradient(90deg, var(--tw-color-accent), var(--tw-color-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
 }
 
-
+/* Utility classes */
 @layer utilities {
-  .bg-card { @apply bg-white dark:bg-slate-900; }
-}
-
-
-@layer utilities {
-  .bg-soft { @apply bg-gray-50 dark:bg-slate-800; }
+  .bg-card {
+    @apply bg-white dark:bg-slate-900;
+  }
+  
+  .bg-soft {
+    @apply bg-slate-50 dark:bg-slate-800;
+  }
 }
