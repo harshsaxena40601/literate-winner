@@ -10,43 +10,38 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between relative">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
-          <img src={LOGO} alt="Logo" className="h-9 w-9" />
-          <span className="font-bold text-white text-lg">99 Market</span>
+          <div className="relative">
+            <img src={LOGO} alt="Logo" className="h-9 w-9" />
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-orange-500 opacity-50 blur-sm -z-10"></div>
+          </div>
+          <span className="logo-text text-lg">99 Market</span>
         </Link>
 
         {/* Navigation Links */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <Link 
             to="/" 
             className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
           >
-            <span className="flex items-center gap-2">
-              <span>POS</span>
-            </span>
+            POS
           </Link>
           <Link 
             to="/payments" 
             className={`nav-link ${location.pathname === "/payments" ? "active" : ""}`}
           >
-            <span className="flex items-center gap-2">
-              <span>Payments</span>
-            </span>
+            Payments
           </Link>
           <Link 
             to="/analytics" 
             className={`nav-link ${location.pathname === "/analytics" ? "active" : ""}`}
           >
-            <span className="flex items-center gap-2">
-              <span>Analytics</span>
-            </span>
+            Analytics
           </Link>
           <Link 
             to="/profile" 
             className={`nav-link ${location.pathname === "/profile" ? "active" : ""}`}
           >
-            <span className="flex items-center gap-2">
-              <span>Profile</span>
-            </span>
+            Profile
           </Link>
         </div>
       </div>
